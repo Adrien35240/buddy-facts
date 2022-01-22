@@ -6,11 +6,13 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://user:pass@postgres:6543/db
+      DATABASE_URL: postgres://user:pass@postgres/db
       NODE_ENV: development
       PORT: 3000
     ports:
       - "3000:3000"
+    links:
+      - postgres
     command: npm run dev
     volumes:
       - .:/app/

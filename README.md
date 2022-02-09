@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 - # Templates d'api 
 #### une serie de quickstarter d'api
@@ -36,3 +37,8 @@ ouvrir un terminal dans le repertoire
         sqitch verify
 - ### Arretez touts les containeurs
         docker stop $(docker ps -a -q)
+=======
+## Api-ception
+ #### description :
+ une api qui appel une api puis une autre api qui sauvegarde dans une bdd postgres
+>>>>>>> express-postgres-pug

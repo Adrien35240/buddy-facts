@@ -1,0 +1,30 @@
+html 
+    include partials/header.pug
+    main
+        h1.title Welcome Buddy !
+        h1.description here is some interesting infos
+            article.article 
+            unless translate
+                span.fact #{data.value}
+            span.fact #{data.translatedText}
+        div.actions
+            form.form(role='form' method='GET' action='/')
+                button.btn What the Fact
+            form.form(role='form' method='POST' action='/fact')
+                input.inputHide(type='text',value=data.value name="fact") 
+                button.btn Save the Fact
+            unless translate
+                form.form(role='form' method='POST' action='/' )
+                    input.inputHide(type='text',value=data.value name="fact") 
+                    button.btn Translate
+        div.classement Classement :
+            ul
+            for item in facts
+                li.li #{item.content}
+                //- div
+                //-     form.form(role='form' method='GET' action='/')
+                //-         button.noteBtn +
+                //-     form.form(role='form' method='GET' action='/')
+                //-         button.noteBtn -
+            
+    include partials/footer.pug

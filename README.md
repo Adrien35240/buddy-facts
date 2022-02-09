@@ -1,10 +1,7 @@
 
 - # Templates d'api 
 #### une serie de quickstarter d'api
-   - ## branch ```express-postgres```
-        -  Une api express/postgres simple avec 2 routes "/" , "/api" et une bdd postgres sur le port 6543
 
-        -  Packages : express / pg / axios / cors / jest
    - ## branch ```express-postgres-pug```      
         -  Une api express/pug/postgres simple avec 2 routes "/" => affiche la home page  , "/api" => api et une bdd postgres sur le port 6543
 

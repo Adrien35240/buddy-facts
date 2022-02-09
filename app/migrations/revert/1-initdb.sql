@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE "fact";
+DROP TABLE IF EXISTS "fact";
 
 COMMIT;

@@ -9,5 +9,5 @@ const host = process.env.HOST ?? 'localhost';
 const server = http.createServer(app);
 
 server.listen(port, () => {
-  console.log(`listening on http://${host}:${port}`);
+  console.log(`listening on http://${host}:${port}`)
 });

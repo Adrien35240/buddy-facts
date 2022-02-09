@@ -7,4 +7,4 @@
 	# registry = sqitch
 	# client = psql
 [target "heroku"]
-	uri = db:postgres://wgfagxlnyekzuf:df7a68965ceff075c0f1423fb8149dc249f543c652a5cffd9094ac75290853df@ec2-34-255-225-151.eu-west-1.compute.amazonaws.com:5432/d20bnoq518ln2f
+	uri = db:<url postgres heroku>

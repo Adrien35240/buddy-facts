@@ -1,11 +1,12 @@
-### main route
-GET http://localhost:3000/api/v1
-### dummy route
-GET http://localhost:3000/api/v1/dummy
-### dummy post
-POST http://localhost:3000/api/v1/dummy HTTP/1.1
-Content-Type: application/json
+################################################################################
+# Fichier de test des routes HTTP de l'API
+# Nécessite l'extension REST Client pour VSCode
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+################################################################################
+@endpoint-dev = http://{{$dotenv HOST}}:{{$dotenv PORT}}
 
-{
-    "message": "hello dummy"
-}
+### get home route
+GET {{ endpoint-dev }}/
+
+### get all from table
+GET {{ endpoint-dev }}/api

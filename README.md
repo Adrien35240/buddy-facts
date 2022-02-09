@@ -9,6 +9,7 @@
 
 ## Commandes Globales :
 ### Demarrer
+### copier le fichier '.env.example' et le renommer en '.env'
 ```cmd
 docker-compose up -d
 ```

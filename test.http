@@ -9,4 +9,4 @@
 GET {{ endpoint-dev }}/
 
 ### get all from table
-GET {{ endpoint-dev }}/api
+GET {{ endpoint-dev }}/fact

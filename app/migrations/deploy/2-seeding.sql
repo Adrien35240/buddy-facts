@@ -1,7 +1,6 @@
--- Verify tepa:1-initdb on pg
--- verify if no errors 
-BEGIN;
+-- Deploy tepa:2-seeding to pg
 
+BEGIN;
 
 INSERT INTO "table" ("message") VALUES
 ('messsage0'),
@@ -13,6 +12,4 @@ INSERT INTO "table" ("message") VALUES
 ('messsage6');
 
 
-SELECT "message" FROM "table";
-
-ROLLBACK;
+COMMIT;

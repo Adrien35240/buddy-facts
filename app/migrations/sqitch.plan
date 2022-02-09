@@ -3,3 +3,4 @@
 %uri=https://github.com/Adrien35240/template-api-express-postgres
 
 1-initdb 2022-01-22T13:15:29Z adrien <adrien@exemple.com> # Initial db config with dummy table
+2-seeding 2022-02-09T12:43:00Z adrien <adrien@exemple.com> # add data to table

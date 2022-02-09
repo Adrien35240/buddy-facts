@@ -2,7 +2,7 @@
 
 BEGIN;
 
-CREATE TABLE "dummy" (
+CREATE TABLE "table" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "message" text NOT NULL,
     "created_at" timestamptz NOT NULL DEFAULT now(),

@@ -1,19 +1,27 @@
 
-# 🚧 In Progress 
-## Run
+- # Templates d'api 
+#### une serie de quickstarter d'api
+   - ## branch ```express-postgres```
+        -  Une api express/postgres simple avec 2 routes "/" , "/api" et une bdd postgres sur le port 6543
+
+        -  Packages : express / pg / axios / cors / jest
+          
+
+## Commandes Globales :
+### Demarrer
 ```cmd
-docker-compose -up -d
+docker-compose up -d
 ```
-http://localhost:3000/api/v1
-## deploy db
+http://localhost:3000/
+## Initialiser la bdd
 ```cmd
 sqitch deploy
 ```
-## Rollback db
+## Rollback de la bdd
 ```cmd
 sqitch revert
 ```
-## Test db
+## Test de la bdd
 ```cmd
 sqitch verify
 ```

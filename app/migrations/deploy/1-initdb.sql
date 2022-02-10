@@ -4,7 +4,7 @@ BEGIN;
 
 CREATE TABLE "fact" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "content" text NOT NULL UNIQUE,
+    "content" text NOT NULL UNIQUE
 );
 
 COMMIT;

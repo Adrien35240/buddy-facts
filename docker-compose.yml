@@ -5,6 +5,7 @@ services:
     build: .
     depends_on:
       - postgres
+      - redis
     environment:
       DATABASE_URL: postgres://user:pass@postgres/db
       NODE_ENV: development
@@ -17,6 +18,9 @@ services:
     volumes:
       - .:/app/
       - /app/node_modules
+    networks:
+      webnet:
+        ipv4_address: 10.5.0.5
 
   postgres:
     image: postgres
@@ -26,3 +30,23 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: db
+    networks:
+      webnet:
+        ipv4_address: 10.5.0.6
+  
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data:/data"
+    command: redis-server --appendonly yes
+    networks:
+      webnet:
+        ipv4_address: 10.5.0.7
+
+networks:
+  webnet:
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16

@@ -10,3 +10,14 @@ GET {{ endpoint-dev }}/
 
 ### get all from table
 GET {{ endpoint-dev }}/fact
+
+### get Redis
+GET {{endpoint-dev}}/api/redis/hello
+
+### post Redis
+POST {{endpoint-dev}}/api/redis/hello
+Content-Type: application/json
+
+{
+    "data":"buddy"
+}

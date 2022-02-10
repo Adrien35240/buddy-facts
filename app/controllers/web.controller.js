@@ -2,13 +2,15 @@ const datamapper = require('../models/main.model')
 module.exports = {
   async homePage(req, res) {
     const fact = await datamapper.getRandomFact()
-    const allFacts = await datamapper.getFact()
-    res.render('index',{data:fact.data,facts:allFacts});
+    const allFacts = await datamapper.getFact();
+    res.render('index', { data: fact.data, factsSaved: allFacts, factsRedis: {fact:"in progress"}
+});
   },
   async translate(req, res) {
     const result = await datamapper.getTranslate(req.body.fact)
     const allFacts = await datamapper.getFact()
-    res.render('index', { translate: true, data: result.data, facts: allFacts})
+    res.render('index', { translate: true, data: result.data, factsSaved: allFacts, factsRedis: { fact:"in progress"
+}})
   },
   async postFact(req, res) {
     console.log(req.body.fact)
@@ -17,7 +19,10 @@ module.exports = {
     {
       const fact = await datamapper.getRandomFact()
       const allFacts = await datamapper.getFact()
-      res.render('index', { data: fact.data, facts: allFacts });
+      res.render('index', {
+        data: fact.data, factsSaved: allFacts, factsRedis: { fact:"in progress"
+}
+});
       }
   },
   async getAllFact(req, res) {

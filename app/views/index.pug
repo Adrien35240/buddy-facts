@@ -2,7 +2,7 @@ html
     include partials/header.pug
     main
         h1.title Welcome Buddy !
-        h3.description here is some interesting infos
+        h3.description here is some interesting infos dude ! FROM <a href="https://oceanfacts.herokuapp.com/" target="_blank">OCEAN FACTS</a>
         article.article 
         if !translate
             span.fact #{data.value}
@@ -14,13 +14,18 @@ html
             unless translate 
                 form.form(role='form' method='POST' action='/fact')
                     input.inputHide(type='text',value=data.value name="fact") 
-                    button.btn Save the Fact
+                    button.btn Oh Dude, Save the Fact !
             unless translate
                 form.form(role='form' method='POST' action='/' )
                     input.inputHide(type='text',value=data.value name="fact") 
-                    button.btn Translate
-        div.classement Facts saved :
-            ul
-            for item in facts
-                li.li #{item.content}
+                    button.btn Translate the fact ! Dude
+        div.results
+            div.classement Facts saved in postgres:
+                ul
+                for item in factsSaved
+                    li.li Oh Dude ! #{item.content}
+            div.classement History in Redis :
+                ul
+                for item in factsRedis
+                    li.li Oh Dude this is in progress ! #{item.fact}
     include partials/footer.pug

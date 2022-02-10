@@ -1,7 +1,7 @@
 
-## Api-ception
+## Buddy-facts
  #### description :
- une api qui appel une api puis une autre api qui sauvegarde dans une bdd postgres
+ une api qui appel une api puis une autre api qui sauvegarde dans une bdd postgres qui sauvegarde dans redis .
 
 #### DEMO
-[API-CEPTION](https://api-ception.herokuapp.com/) 
+[Buddy-facts](https://buddy-facts.herokuapp.com/) 

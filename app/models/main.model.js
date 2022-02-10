@@ -18,16 +18,21 @@ const datamapper = {
     form.append('target', 'fr');
     form.append('format', 'text');
     form.append('api_key', 'text');
-   const result =await axios.post('https://libretranslate.de/translate', form, { headers: form.getHeaders() })
+    const result = await axios.post('https://libretranslate.de/translate', form, { headers: form.getHeaders() })
     return result
   },
   async postFact(fact) {
-    const query = {
-      text: 'INSERT INTO fact(content) VALUES ($1)',
-      values:[fact]
+    try {
+      const query = {
+        text: 'INSERT INTO fact(content) VALUES ($1)',
+        values: [fact]
+      }
+      const result = await client.query(query)
+      console.log(result.status)
+      return result
+    } catch (error) {
+      console.log(error)
     }
-    const result = await client.query(query)
-    return result
   }
 
 };

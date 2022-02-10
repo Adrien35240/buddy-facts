@@ -52,9 +52,7 @@ main{
 .results{
     display: flex;
     margin-top: 1rem;
-}
-.classement{
-    width: 60ch;
+    justify-content: space-evenly;
 }
 .li{
     margin-top: .4rem;
@@ -69,6 +67,24 @@ a{
 }
 .ref>a:hover{
     color: #e66465;
+}
+.results__container{
+    height: 40vh;
+    overflow: scroll;
+    width: 60ch;
+}
+.results__container::-webkit-scrollbar {
+  display: none;
+}
+.results__container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.results__container-title{
+    position: fixed;
+}
+.facts__container{
+    margin-top: 1.6rem;
 }
 footer{
     position: absolute;

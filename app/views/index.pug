@@ -20,12 +20,19 @@ html
                     input.inputHide(type='text',value=data.value name="fact") 
                     button.btn Translate the fact ! Dude
         div.results
-            div.classement Facts saved in postgres:
-                ul
-                for item in factsSaved
-                    li.li Oh Dude ! #{item.content}
-            div.classement History in Redis :
-                ul
-                for item in factsRedis
-                    li.li Oh Dude this is in progress ! #{item.fact}
+            div.results__container 
+                span.results__container-title Facts saved in postgres: 
+                div.facts__container 
+                    ul
+                    for item in factsSaved
+                        li.li Oh Dude ! #{item.content}
+            div.results__container 
+                span.title History in Redis :
+                div.facts__container
+                    ul
+                        li.li Oh Dude, Something wrong with Redis !
+                    if factsRedis
+                       for item in factsRedis
+                        li.li #{item.fact} 
+                    
     include partials/footer.pug

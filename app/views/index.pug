@@ -4,9 +4,10 @@ html
         h1.title Welcome Buddy !
         h3.description here is some interesting infos dude ! FROM <a href="https://oceanfacts.herokuapp.com/" target="_blank">OCEAN FACTS</a>
         article.article 
+        if !data.value 
+            span.loading__fact loading
+        else
         if !translate
-            unless data 
-                span loading
             span.fact #{data.value}
         else
             span.fact #{data.translatedText}

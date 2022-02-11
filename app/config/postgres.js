@@ -1,9 +1,15 @@
 const { Pool } = require('pg');
+let config
+if (process.env.NODE_ENV === 'development') {
+    config = {
+        connectionString: process.env.DATABASE_URL_DEV,
+    };
+} else {
+    config = {
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false },
+    };
+}
 
-const config = {
-    connectionString: process.env.DATABASE_URL,
-    // comment line below for local hosting
-    ssl: { rejectUnauthorized: false },
-};
 
 module.exports = new Pool(config);

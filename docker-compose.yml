@@ -7,9 +7,11 @@ services:
       - postgres
       - redis
     environment:
-      DATABASE_URL: postgres://user:pass@postgres/db
-      NODE_ENV: development
       PORT: 3000
+      HOST: localhost
+      DATABASE_URL_DEV: postgres://user:pass@postgres/db
+      NODE_ENV: development
+      REDIS_URL_DEV: redis://10.5.0.7:6379
     ports:
       - "3000:3000"
     links:
@@ -25,7 +27,7 @@ services:
   postgres:
     image: postgres
     ports:
-      - "6543:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass

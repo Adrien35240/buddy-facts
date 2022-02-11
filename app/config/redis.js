@@ -1,12 +1,22 @@
 const { createClient } = require('redis');
 
-const client = createClient({
-    url: process.env.REDISCLOUD_URL,
-});
+let config
+if (process.env.NODE_ENV === 'development') {
+    config = {
+        url: process.env.REDIS_URL_DEV,
+    };
+} else {
+    config = {
+        url: process.env.REDISCLOUD_URL
+    };
+}
+
+
+
+const client = createClient(config);
 
 client.on('error', (err) => {
-    console.log('Redis Client Error', err)
-    return err
+    console.log('Redis Client Error', err);
 });
 
 (async () => {

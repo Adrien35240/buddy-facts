@@ -44,7 +44,6 @@ const datamapper = {
     } catch (error) {
       return error
     }
-    // return clientRedis.set(`${process.env.REDIS_PREFIX}${data}`);
   },
   async getAllRedis() {
     try {
@@ -60,7 +59,6 @@ const datamapper = {
     } catch (error) {
       return error
     }
-    // return clientRedis.get(`${process.env.REDIS_PREFIX}${data}`);
   },
 
 };

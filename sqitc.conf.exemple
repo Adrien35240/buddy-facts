@@ -1,10 +1,9 @@
 [core]
 	engine = pg
-	# plan_file = sqitch.plan
 	top_dir = app/migrations
-[engine "pg"]
-	target = db:pg://user:pass@localhost:6543/db
-	# registry = sqitch
-	# client = psql
-[target "heroku"]
-	uri = db:<url postgres heroku>
+[engine "develop"]
+	target = db:pg://user:pass@localhost:5432/db
+[target "heroku-staging"]
+	uri = db:<postgres-uri-staging>
+[target "heroku-production"]
+	uri = db:<postgres-uri-production>

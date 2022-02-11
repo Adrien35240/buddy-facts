@@ -5,9 +5,13 @@ if (process.env.NODE_ENV === 'development') {
     config = {
         url: process.env.REDIS_URL_DEV,
     };
-} else {
+} else if (process.env.NODE_ENV === 'staging') {
     config = {
-        url: process.env.REDISCLOUD_URL
+        url: process.env.REDIS_URL_STAGING
+    }
+} else if (process.env.NODE_ENV === 'production') {
+    config = {
+        url: process.env.REDIS_URL_PRODUCTION
     };
 }
 

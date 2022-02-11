@@ -17,7 +17,6 @@ module.exports = {
     res.render('index', { translate: true, data: result.data, factsSaved: allFacts, factsRedis: getAllRedis })
   },
   async postFact(req, res) {
-    console.log(req.body.fact)
     const result = await datamapper.postFact(req.body.fact)
     if (result) {
       const fact = await datamapper.getRandomFact()

@@ -10,7 +10,11 @@ const io = require('socket.io')(server)
 
 setInterval(async function () {
   const getAllRedis = await datamapper.getAllRedis()
-  io.emit('message',getAllRedis.length);
+  let n = getAllRedis.length - 1
+  if (n < 0) {
+    n=0
+  }
+  io.emit('message',n);
 }, 1000);
 
 server.listen(port, () => {

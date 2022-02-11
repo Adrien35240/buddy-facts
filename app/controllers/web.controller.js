@@ -6,9 +6,10 @@ module.exports = {
     const fact = await datamapper.getRandomFact()
     const allFacts = await datamapper.getFact();
     const getAllRedis = await datamapper.getAllRedis()
+    console.log(getAllRedis)
     const key = "key" + (getAllRedis.length + 1)
     await datamapper.saveRedis(key, fact.data.value)
-    res.render('index', { data: fact.data, factsSaved: allFacts, factsRedis: getAllRedis });
+    res.render('index', {env:process.env.NODE_ENV, data: fact.data.value, factsSaved: allFacts, factsRedis: getAllRedis });
   },
   async translate(req, res) {
     const result = await datamapper.getTranslate(req.body.fact)

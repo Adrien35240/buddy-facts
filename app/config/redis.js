@@ -15,8 +15,6 @@ if (process.env.NODE_ENV === 'development') {
     };
 }
 
-
-
 const client = createClient(config);
 
 client.on('error', (err) => {

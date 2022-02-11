@@ -3,7 +3,7 @@ const FormData = require('form-data');
 const client = require('../config/postgres')
 const clientRedis = require('../config/redis')
 const datamapper = {
-
+  // ------------- PostGresSql ----------------
   async getRandomFact() {
     const result = axios.get('https://oceanfacts.herokuapp.com/api/random/')
     return result

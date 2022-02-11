@@ -3,7 +3,7 @@ const FormData = require('form-data');
 const client = require('../config/postgres')
 const clientRedis = require('../config/redis')
 const datamapper = {
-
+  // ------------- PostGresSql ----------------
   async getRandomFact() {
     const result = axios.get('https://oceanfacts.herokuapp.com/api/random/')
     return result
@@ -29,17 +29,16 @@ const datamapper = {
         values: [fact]
       }
       const result = await client.query(query)
-      console.log(result.status)
       return result
     } catch (error) {
       console.log(error)
     }
   },
-  // ------------- REDIS ----------------
+  // ------------- REDIS /api/redis ----------------
   async saveRedis(key, data) {
     try {
       const keyData = await clientRedis.set(key, data);
-      await clientRedis.expire(key, 30)
+      await clientRedis.expire(key, 15)
       return keyData
     } catch (error) {
       return error
@@ -48,10 +47,8 @@ const datamapper = {
   async getAllRedis() {
     try {
       const hisKeyExist = await clientRedis.keys('*key*')
-      console.log('hisExist', hisKeyExist)
       if (hisKeyExist.length > 0) {
         const getAll = await clientRedis.mGet(hisKeyExist)
-        console.log("get all", getAll)
         return getAll
       } else {
         return []

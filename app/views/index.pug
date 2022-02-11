@@ -1,11 +1,22 @@
 html 
     include partials/header.pug
+    if env==="development"
+        script(src='http://localhost:3000/socket.io/socket.io.js')
+    else if env==="staging"
+        script(src='https://buddy-facts-staging.herokuapp.com/socket.io/socket.io.js')
+    else if env==="production"
+        script(src='https://buddy-facts.herokuapp.com/socket.io/socket.io.js')
     main
+        script 
+            | const socket = io();
+            | socket.on('message', function(msg){
+            |    document.getElementById("historyLength").innerHTML = ' '+msg;
+            |  });
         h1.title Welcome Buddy !
         h3.description here is some interesting infos dude ! FROM <a href="https://oceanfacts.herokuapp.com/" target="_blank">OCEAN FACTS</a>
         article.article 
         if !translate
-            span.fact #{data.value}
+            span.fact #{data}
         else
             span.fact #{data.translatedText}
         div.actions
@@ -27,7 +38,8 @@ html
                     for item in factsSaved
                         li.li Oh Dude ! #{item.content}
             div.results__container 
-                span.title History in Redis (fact delete every 30s):
+                span.title History in Redis (fact delete every 15 s):
+                    span(id='historyLength')
                 div.facts__container
                     ul
                     if factsRedis

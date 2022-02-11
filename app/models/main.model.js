@@ -1,7 +1,7 @@
 const axios = require('axios')
 const FormData = require('form-data');
 const client = require('../config/postgres')
-//const clientRedis = require('../config/redis')
+// const clientRedis = require('../config/redis')
 const datamapper = {
 
   async getRandomFact() {

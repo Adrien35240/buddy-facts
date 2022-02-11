@@ -27,12 +27,11 @@ html
                     for item in factsSaved
                         li.li Oh Dude ! #{item.content}
             div.results__container 
-                span.title History in Redis :
+                span.title History in Redis (fact delete every 10s):
                 div.facts__container
                     ul
-                        li.li Oh Dude, Something wrong with Redis !
                     if factsRedis
-                       for item in factsRedis
-                        li.li #{item.fact} 
+                        each item in factsRedis
+                            li.li #{item} 
                     
     include partials/footer.pug

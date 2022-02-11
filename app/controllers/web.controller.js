@@ -3,24 +3,33 @@ module.exports = {
   async homePage(req, res) {
     const fact = await datamapper.getRandomFact()
     const allFacts = await datamapper.getFact();
-    res.render('index', { data: fact.data, factsSaved: allFacts});
+    const getAllRedis = await datamapper.getAllRedis()
+    const key = "key" + (getAllRedis.length + 1)
+    const hisSaveInRedis = await datamapper.saveRedis(key, fact.data.value)
+    console.log('hisSaveInRedis', hisSaveInRedis)
+    console.log('getAllRedis', getAllRedis)
+    res.render('index', { data: fact.data, factsSaved: allFacts, factsRedis: getAllRedis });
   },
   async translate(req, res) {
     const result = await datamapper.getTranslate(req.body.fact)
     const allFacts = await datamapper.getFact()
-    res.render('index', { translate: true, data: result.data, factsSaved: allFacts})
-},
+    const getAllRedis = await datamapper.getAllRedis()
+    res.render('index', { translate: true, data: result.data, factsSaved: allFacts, factsRedis: getAllRedis })
+  },
   async postFact(req, res) {
     console.log(req.body.fact)
     const result = await datamapper.postFact(req.body.fact)
-    if (result)
-    {
+    if (result) {
       const fact = await datamapper.getRandomFact()
       const allFacts = await datamapper.getFact()
+      const getAllRedis = await datamapper.getAllRedis()
+      const key = "key" + (getAllRedis.length + 1)
+      const hisSaveInRedis = await datamapper.saveRedis(key, fact.data.value)
+      console.log('hisSaveInRedis', hisSaveInRedis)
       res.render('index', {
-        data: fact.data, factsSaved: allFacts
-});
-      }
+        data: fact.data, factsSaved: allFacts, factsRedis: getAllRedis
+      });
+    }
   },
   async getAllFact(req, res) {
     const allFacts = await datamapper.getFact()

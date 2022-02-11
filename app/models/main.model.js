@@ -1,7 +1,7 @@
 const axios = require('axios')
 const FormData = require('form-data');
 const client = require('../config/postgres')
-const clientRedis = require('../config/redis')
+//const clientRedis = require('../config/redis')
 const datamapper = {
 
   async getRandomFact() {
@@ -36,12 +36,33 @@ const datamapper = {
     }
   },
   // ------------- REDIS ----------------
-  async createRedis(key, data) {
-    return clientRedis.set(key, data);
+  async saveRedis(key, data) {
+    try {
+      const keyData = await clientRedis.set(key, data);
+      await clientRedis.expire(key, 10)
+      return keyData
+    } catch (error) {
+      return error
+    }
+
     // return clientRedis.set(`${process.env.REDIS_PREFIX}${data}`);
   },
-  getRedis(key) {
-    return clientRedis.get(key);
+  async getAllRedis() {
+    try {
+      const hisKeyExist = await clientRedis.keys('*key*')
+      console.log('hisExist', hisKeyExist)
+      if (hisKeyExist.length > 0) {
+        const getAll = await clientRedis.mGet(hisKeyExist)
+        console.log("get all", getAll)
+        return getAll
+      } else {
+        return []
+      }
+    } catch (error) {
+      return error
+    }
+
+
     // return clientRedis.get(`${process.env.REDIS_PREFIX}${data}`);
   },
 

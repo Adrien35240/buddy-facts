@@ -35,7 +35,7 @@ const datamapper = {
       console.log(error)
     }
   },
-  // ------------- REDIS ----------------
+  // ------------- REDIS /api/redis ----------------
   async saveRedis(key, data) {
     try {
       const keyData = await clientRedis.set(key, data);

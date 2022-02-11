@@ -1,13 +1,13 @@
 const datamapper = require('../models/main.model')
 module.exports = {
   async homePage(req, res) {
+   
+
     const fact = await datamapper.getRandomFact()
     const allFacts = await datamapper.getFact();
     const getAllRedis = await datamapper.getAllRedis()
     const key = "key" + (getAllRedis.length + 1)
-    const hisSaveInRedis = await datamapper.saveRedis(key, fact.data.value)
-    console.log('hisSaveInRedis', hisSaveInRedis)
-    console.log('getAllRedis', getAllRedis)
+    await datamapper.saveRedis(key, fact.data.value)
     res.render('index', { data: fact.data, factsSaved: allFacts, factsRedis: getAllRedis });
   },
   async translate(req, res) {
@@ -24,8 +24,7 @@ module.exports = {
       const allFacts = await datamapper.getFact()
       const getAllRedis = await datamapper.getAllRedis()
       const key = "key" + (getAllRedis.length + 1)
-      const hisSaveInRedis = await datamapper.saveRedis(key, fact.data.value)
-      console.log('hisSaveInRedis', hisSaveInRedis)
+      await datamapper.saveRedis(key, fact.data.value)
       res.render('index', {
         data: fact.data, factsSaved: allFacts, factsRedis: getAllRedis
       });
@@ -44,7 +43,6 @@ module.exports = {
     return res.json({ result });
   },
   async saveRedis(req, res) {
-    // const { password } = req.body; Si auth
     if (!req.body.data) {
       res.status(400).json({ error: 'data is required in body' });
     }

@@ -1,12 +1,17 @@
 html 
     include partials/header.pug
+    script(src='http://localhost:3000/socket.io/socket.io.js')
     main
+        script 
+            | const socket = io();
+            | socket.on('message', function(msg){
+            |    console.log(msg);
+            |    document.getElementById("message").innerHTML = msg;
+            |  });
         h1.title Welcome Buddy !
+        h1(id='message')
         h3.description here is some interesting infos dude ! FROM <a href="https://oceanfacts.herokuapp.com/" target="_blank">OCEAN FACTS</a>
         article.article 
-        if !data.value 
-            span.loading__fact loading
-        else
         if !translate
             span.fact #{data.value}
         else

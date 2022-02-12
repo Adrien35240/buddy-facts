@@ -7,9 +7,3 @@ une api qui appel une api puis une autre api qui sauvegarde dans une bdd postgre
 #### DEMO
 
 [Buddy-facts](https://buddy-facts.herokuapp.com/)
-
-### Déployer en local
-
-`docker-compose up -d`
-
-`sqitch deploy develop`

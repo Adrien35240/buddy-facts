@@ -22,10 +22,10 @@ html
                 form.form(role='form' method='POST' action='/fact')
                     input.inputHide(type='text',value=data.value name="fact") 
                     button.btn Oh Dude, Save the Fact !
-            //- unless translate
-            //-     form.form(role='form' method='POST' action='/' )
-            //-         input.inputHide(type='text',value=data.value name="fact") 
-            //-         button.btn Translate the fact ! Dude
+            unless translate
+                form.form(role='form' method='POST' action='/' )
+                    input.inputHide(type='text',value=data.value name="fact") 
+                    button.btn Translate the fact ! Dude
         div.results
             div.results__container 
                 span.results__container-title Facts saved in postgres: 

@@ -1,15 +1,13 @@
 const datamapper = require('../models/main.model')
 module.exports = {
   async homePage(req, res) {
-   
-
     const fact = await datamapper.getRandomFact()
     const allFacts = await datamapper.getFact();
     const getAllRedis = await datamapper.getAllRedis();
     console.log(getAllRedis)
     const key = "key" + (getAllRedis.length + 1)
     await datamapper.saveRedis(key, fact.data.value)
-    res.render('index', {env:process.env.NODE_ENV, data: fact.data.value, factsSaved: allFacts, factsRedis: getAllRedis });
+    res.render('index', {env:process.env.NODE_ENV, data: fact.data, factsSaved: allFacts, factsRedis: getAllRedis });
   },
   async translate(req, res) {
     const result = await datamapper.getTranslate(req.body.fact)
@@ -18,8 +16,8 @@ module.exports = {
     res.render('index', { translate: true, data: result.data, factsSaved: allFacts, factsRedis: getAllRedis })
   },
   async postFact(req, res) {
+    console.log("req.body.fact", req.body)
     const result = await datamapper.postFact(req.body.fact)
-    if (result) {
       const fact = await datamapper.getRandomFact()
       const allFacts = await datamapper.getFact()
       const getAllRedis = await datamapper.getAllRedis()
@@ -28,7 +26,6 @@ module.exports = {
       res.render('index', {
         data: fact.data, factsSaved: allFacts, factsRedis: getAllRedis
       });
-    }
   },
   async getAllFact(req, res) {
     const allFacts = await datamapper.getFact()

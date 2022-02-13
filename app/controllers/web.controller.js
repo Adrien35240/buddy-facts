@@ -5,7 +5,7 @@ module.exports = {
 
     const fact = await datamapper.getRandomFact()
     const allFacts = await datamapper.getFact();
-    const getAllRedis = await datamapper.getAllRedis()
+    const getAllRedis = await datamapper.getAllRedis();
     console.log(getAllRedis)
     const key = "key" + (getAllRedis.length + 1)
     await datamapper.saveRedis(key, fact.data.value)

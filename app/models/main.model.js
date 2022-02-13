@@ -5,7 +5,7 @@ const clientRedis = require('../config/redis')
 const datamapper = {
   // ------------- PostGresSql ----------------
   async getRandomFact() {
-    const result = axios.get('https://oceanfacts.herokuapp.com/api/random/')
+    const result = axios.get('https://oceanfacts.herokuapp.com/api/random/');
     return result
   },
   async getFact() {

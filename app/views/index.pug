@@ -12,7 +12,7 @@ html
         h3.description here is some interesting facts dude ! FROM <a href="https://oceanfacts.herokuapp.com/" target="_blank">OCEAN FACTS</a>
         article.article 
         if !translate
-            span.fact #{data}
+            span.fact #{data.value}
         else
             span.fact #{data.translatedText}
         div.actions
